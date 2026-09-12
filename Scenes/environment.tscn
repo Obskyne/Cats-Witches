@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bm034468jg75f"]
+
+[ext_resource type="PackedScene" uid="uid://cnlea0c7f4ww1" path="res://Scenes/world.tscn" id="1_km3fo"]
+[ext_resource type="Texture2D" uid="uid://cfyl2bhk85gg8" path="res://Sprites/light.png" id="1_mfu5p"]
+
+[node name="Environment" type="Node2D" unique_id=2142665666]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=305986912]
+energy = 0.46
+blend_mode = 1
+
+[node name="Lamplight" type="PointLight2D" parent="." unique_id=1230619651]
+position = Vector2(924, 372)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+texture_scale = 0.3
+
+[node name="Pumpkin1" type="Node" parent="." unique_id=104274476]
+
+[node name="Pumpkin" type="PointLight2D" parent="Pumpkin1" unique_id=1188796459]
+position = Vector2(755.44, 543.5)
+scale = Vector2(2.0624964, 2.6367197)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+texture_scale = 0.01
+
+[node name="Pumpkin2" type="Node" parent="." unique_id=1319284965]
+
+[node name="Pumpkin2" type="PointLight2D" parent="Pumpkin2" unique_id=1343196159]
+position = Vector2(613, 569.5)
+scale = Vector2(3.5156264, 2.0507796)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+texture_scale = 0.01
+
+[node name="World" parent="." unique_id=370054864 instance=ExtResource("1_km3fo")]

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bgxaftyt733c"]
+
+[ext_resource type="Script" uid="uid://ctnbhllwncusr" path="res://Scripts/void.gd" id="1_87wev"]
+
+[node name="Void" type="Area2D" unique_id=1713305640]
+script = ExtResource("1_87wev")
+
+[node name="Timer" type="Timer" parent="." unique_id=1778698303]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

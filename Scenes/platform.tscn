@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b1uxtufkmyebd"]
+
+[ext_resource type="Texture2D" uid="uid://0puwj3kjik8s" path="res://Environments/Tile_Map.png" id="1_1rc8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slkoe"]
+size = Vector2(48, 10)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=1636839918]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=118182971]
+texture = ExtResource("1_1rc8e")
+region_enabled = true
+region_rect = Rect2(120, 216, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=769994687]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_slkoe")
+one_way_collision = true

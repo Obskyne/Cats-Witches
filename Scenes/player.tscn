@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c8nq8jvii3js4"]
+
+[ext_resource type="Script" uid="uid://b03jk0c2solfg" path="res://Scripts/player.gd" id="1_fkybt"]
+[ext_resource type="Texture2D" uid="uid://c6vuk8xbj6oq0" path="res://Sprites/black_cat/gato_idle.png" id="1_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://ct78uq5o2hjiq" path="res://Sprites/black_cat/gato_idle1.png" id="2_3smsa"]
+[ext_resource type="Texture2D" uid="uid://c8b46dmbdb4we" path="res://Sprites/black_cat/gato_walk0.png" id="5_tx1dd"]
+[ext_resource type="Texture2D" uid="uid://2frjmpb6c558" path="res://Sprites/black_cat/gato_walk1.png" id="6_gymyn"]
+[ext_resource type="Texture2D" uid="uid://cfyl2bhk85gg8" path="res://Sprites/light.png" id="6_x3wgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slkoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x3wgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3smsa")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tx1dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gymyn")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3wgy"]
+size = Vector2(18, 12)
+
+[node name="Player" type="CharacterBody2D" unique_id=1350913058]
+script = ExtResource("1_fkybt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=449864408]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_slkoe")
+animation = &"walk"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1848717147]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_x3wgy")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2027785463]
+position = Vector2(0, -6)
+rotation = -1.5707964
+energy = 0.18
+texture = ExtResource("6_x3wgy")
+texture_scale = 0.05

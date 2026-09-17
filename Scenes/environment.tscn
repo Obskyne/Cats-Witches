@@ -15,6 +15,7 @@ color = Color(0.987855, 0.99, 0.8613, 1)
 energy = 1.18
 blend_mode = 2
 texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
 texture_scale = 0.3
 
 [node name="Pumpkin1" type="Node" parent="." unique_id=104274476]

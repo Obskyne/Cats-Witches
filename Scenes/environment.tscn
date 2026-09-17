@@ -20,7 +20,7 @@ texture_scale = 0.3
 [node name="Pumpkin1" type="Node" parent="." unique_id=104274476]
 
 [node name="Pumpkin" type="PointLight2D" parent="Pumpkin1" unique_id=1188796459]
-position = Vector2(755.44, 543.5)
+position = Vector2(733, 543.00006)
 scale = Vector2(2.0624964, 2.6367197)
 color = Color(0.987855, 0.99, 0.8613, 1)
 energy = 1.18

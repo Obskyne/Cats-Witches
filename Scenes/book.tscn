@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://du3ybmp6dso15"]
+
+[ext_resource type="Script" uid="uid://dmvgywgf51ecu" path="res://Scenes/book.gd" id="1_khdek"]
+[ext_resource type="Texture2D" uid="uid://0puwj3kjik8s" path="res://Environments/Tile_Map.png" id="1_rhhov"]
+[ext_resource type="AudioStream" uid="uid://uhj8be3akgri" path="res://Sounds/PickBook.mp3" id="3_0vt1r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slkoe"]
+atlas = ExtResource("1_rhhov")
+region = Rect2(72, 120, 24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slkoe"]
+size = Vector2(33, 26)
+
+[sub_resource type="Animation" id="Animation_0vt1r"]
+resource_name = "PickUpBook"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickupSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gr7b7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickupSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgncb"]
+_data = {
+&"PickUpBook": SubResource("Animation_0vt1r"),
+&"RESET": SubResource("Animation_gr7b7")
+}
+
+[node name="Book" type="Area2D" unique_id=1489216202]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_khdek")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=133464000]
+texture = SubResource("AtlasTexture_slkoe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1149857335]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_slkoe")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=1313479857]
+stream = ExtResource("3_0vt1r")
+volume_db = 6.754
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1776168348]
+libraries/ = SubResource("AnimationLibrary_dgncb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cpxx5tker1n8e"]
+
+[ext_resource type="AudioStream" uid="uid://d2b4dn7gvscgh" path="res://Sounds/VirtualLight.mp3" id="1_de225"]
+
+[node name="MainMuseek" type="AudioStreamPlayer2D" unique_id=713523352]
+stream = ExtResource("1_de225")
+volume_db = -6.0
+autoplay = true

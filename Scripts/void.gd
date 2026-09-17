@@ -4,7 +4,7 @@ extends Area2D
 
 func _on_body_entered(_body: Node2D) -> void:
 	timer.start()
-	print("You Died Nigga!")
+	print("You Died")
 
 
 func _on_timer_timeout() -> void:

@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cro17n1beoxdk" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://c8nq8jvii3js4" path="res://Scenes/player.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://caqi0gus2qh5w" path="res://Scenes/game_manager.gd" id="2_344ge"]
 [ext_resource type="PackedScene" uid="uid://bm034468jg75f" path="res://Scenes/environment.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bgxaftyt733c" path="res://Scenes/void.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://b1uxtufkmyebd" path="res://Scenes/platform.tscn" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://b0st06mn50aw" path="res://Scenes/keymaps.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://du3ybmp6dso15" path="res://Scenes/book.tscn" id="7_6bp64"]
+[ext_resource type="Script" uid="uid://d3ogwptcfhomu" path="res://Scenes/updownplatform1.gd" id="7_6iyac"]
+[ext_resource type="Script" uid="uid://bst0ukl3gnxym" path="res://Scenes/interactiveplatform.gd" id="7_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://dyhwpyftdvu8w" path="res://Sounds/amen.mp3" id="8_d1ilt"]
+[ext_resource type="Script" uid="uid://nrnjnc8aljjb" path="res://Scenes/jump!.gd" id="9_hptm8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_slkoe"]
 
@@ -22,12 +29,32 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(856, 560)]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(888, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(632, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
-[sub_resource type="Animation" id="Animation_kry3j"]
-resource_name = "platform_1"
-length = 6.0
-loop_mode = 2
-step = 0.3
+[sub_resource type="Animation" id="Animation_hptm8"]
+resource_name = "platform2"
+length = 5.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,23 +62,181 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4.5666666),
-"transitions": PackedFloat32Array(3.1383355, 3.4822056),
+"times": PackedFloat32Array(0.5, 4.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(880, 630), Vector2(880, 416)]
+"values": [Vector2(1280, 392), Vector2(1856, 392)]
+}
+
+[sub_resource type="Animation" id="Animation_fdnlq"]
+resource_name = "updownplatform1"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(888, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(632, -0.25, 0, 0.43333334, 39.17987, 416, -0.23161077, -23.759155, 0, 0),
+"times": PackedFloat32Array(0, 3)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_21xkr"]
 _data = {
 &"RESET": SubResource("Animation_21xkr"),
-&"platform_1": SubResource("Animation_kry3j")
+&"platform2": SubResource("Animation_hptm8"),
+&"updownplatform1": SubResource("Animation_fdnlq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anp1u"]
+size = Vector2(46, 12)
+
+[sub_resource type="Animation" id="Animation_6iyac"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1328.0005, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(416, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d1ilt"]
+resource_name = "interactiveplatform"
+length = 7.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(1328.0005, -0.25, 0, 0.53333336, -51.114258, 1359.109, -0.19999999, -35.972534, 1.5968722, 287.2177, 1976, -2.6333332, 30.099976, 0, 0),
+"times": PackedFloat32Array(0, 1.1333333, 7)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6iyac"]
+_data = {
+&"RESET": SubResource("Animation_6iyac"),
+&"interactiveplatform": SubResource("Animation_d1ilt")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
+size = Vector2(48, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slkoe"]
+size = Vector2(48, 16)
+
+[sub_resource type="Animation" id="Animation_344ge"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 397)]
+}
+
+[sub_resource type="Animation" id="Animation_ynf5e"]
+resource_name = "collectableitem"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 2),
+"transitions": PackedFloat32Array(1.3660405, 0.57434916, 1),
+"update": 0,
+"values": [Vector2(960, 397), Vector2(960, 389.345), Vector2(960, 397)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hptm8"]
+_data = {
+&"RESET": SubResource("Animation_344ge"),
+&"collectableitem": SubResource("Animation_ynf5e")
 }
 
 [node name="Node" type="Node" unique_id=317298688]
 script = ExtResource("1_8gbba")
 
+[node name="GameManager" type="Node" parent="." unique_id=1294012400]
+unique_name_in_owner = true
+script = ExtResource("2_344ge")
+
+[node name="HUD" type="CanvasLayer" parent="GameManager" unique_id=813582655]
+
+[node name="BookCounter" type="Label" parent="GameManager/HUD" unique_id=1281485724]
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 186.0
+offset_bottom = 26.0
+text = "Books Found: 0/7"
+
 [node name="Player" parent="." unique_id=964896066 instance=ExtResource("1_bo1nx")]
-position = Vector2(286, 454)
+position = Vector2(296, 432)
+collision_layer = 7
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1293660229]
 zoom = Vector2(4, 4)
@@ -68,9 +253,88 @@ position = Vector2(272, 978)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Void" unique_id=1724918892]
 shape = SubResource("WorldBoundaryShape2D_slkoe")
 
-[node name="Platform" parent="." unique_id=1636839918 instance=ExtResource("5_kry3j")]
-position = Vector2(856, 560)
+[node name="Platforms" type="Node" parent="." unique_id=1145958054]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=1047011385]
+[node name="Platform2" parent="Platforms" unique_id=1220171258 instance=ExtResource("5_kry3j")]
+position = Vector2(888, 632)
+script = ExtResource("7_6iyac")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2" unique_id=950016467]
 libraries/ = SubResource("AnimationLibrary_21xkr")
-autoplay = &"platform_1"
+
+[node name="Area2D" type="Area2D" parent="Platforms/Platform2" unique_id=1703509754]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2/Area2D" unique_id=429604470]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_anp1u")
+
+[node name="Platform" parent="Platforms" unique_id=1636839918 instance=ExtResource("5_kry3j")]
+position = Vector2(1328.0005, 416)
+script = ExtResource("7_ynf5e")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="Platforms/Platform" unique_id=1883301558]
+stream = ExtResource("8_d1ilt")
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform" unique_id=1741645971]
+libraries/ = SubResource("AnimationLibrary_6iyac")
+
+[node name="Area2D" type="Area2D" parent="Platforms/Platform" unique_id=1898562329]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform/Area2D" unique_id=379546527]
+shape = SubResource("RectangleShape2D_344ge")
+
+[node name="WorldLabels" type="Node" parent="." unique_id=1533847416]
+unique_name_in_owner = true
+
+[node name="Keymaps" type="Label" parent="WorldLabels" unique_id=331627426]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = 40.0
+offset_right = -7.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+text = "Use the arrow keys to move...
+Mayus: Sprint
+Z: Jump..."
+script = ExtResource("6_21xkr")
+
+[node name="Jump!" type="Label" parent="WorldLabels" unique_id=511032859]
+offset_left = 1248.0
+offset_top = 424.0
+offset_right = 1288.0
+offset_bottom = 447.0
+text = "Jump!"
+script = ExtResource("9_hptm8")
+
+[node name="Area2D" type="Area2D" parent="WorldLabels/Jump!" unique_id=1547449397]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLabels/Jump!/Area2D" unique_id=96597984]
+position = Vector2(-48, -48)
+shape = SubResource("RectangleShape2D_slkoe")
+
+[node name="Books" type="Node" parent="." unique_id=1913506304]
+
+[node name="Book" parent="Books" unique_id=1656433842 instance=ExtResource("7_6bp64")]
+position = Vector2(960, 397)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Books/Book" unique_id=1030576739]
+libraries/ = SubResource("AnimationLibrary_hptm8")
+autoplay = &"collectableitem"
+
+[connection signal="body_entered" from="Platforms/Platform2/Area2D" to="Platforms/Platform2" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Platforms/Platform/Area2D" to="Platforms/Platform" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Platforms/Platform/Area2D" to="Platforms/Platform" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="WorldLabels/Jump!/Area2D" to="WorldLabels/Jump!" method="_on_area_2d_body_entered"]

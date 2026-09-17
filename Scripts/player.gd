@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var SPEED: float = 85.0
+var SPEED: float = 75.0
 var JUMP_VELOCITY: float = -350.0
 var GRAVITY: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -18,12 +18,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y /= 2
 
-
-	# Get the input direction and handle the movement/deceleration.
-	
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
-	var current_speed = SPEED * 1.5 if Input.is_action_pressed("sprint") else SPEED
+	var current_speed := SPEED * 1.6 if Input.is_action_pressed("sprint") else SPEED
 	
 	if direction > 0:
 		animated_sprite.flip_h = false
@@ -37,7 +33,6 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("walk")
 	else:
 		animated_sprite.play("idle")
-	
 	
 	if direction:
 		velocity.x = direction * current_speed

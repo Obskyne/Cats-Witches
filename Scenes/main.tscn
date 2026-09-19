@@ -3,15 +3,27 @@
 [ext_resource type="Script" uid="uid://cro17n1beoxdk" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://c8nq8jvii3js4" path="res://Scenes/player.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://caqi0gus2qh5w" path="res://Scenes/game_manager.gd" id="2_344ge"]
+[ext_resource type="PackedScene" uid="uid://bftdr66ro8148" path="res://Scenes/witch.tscn" id="2_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://bm034468jg75f" path="res://Scenes/environment.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bgxaftyt733c" path="res://Scenes/void.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://b1uxtufkmyebd" path="res://Scenes/platform.tscn" id="5_kry3j"]
-[ext_resource type="Script" uid="uid://b0st06mn50aw" path="res://Scenes/keymaps.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://du3ybmp6dso15" path="res://Scenes/book.tscn" id="7_6bp64"]
 [ext_resource type="Script" uid="uid://d3ogwptcfhomu" path="res://Scenes/updownplatform1.gd" id="7_6iyac"]
 [ext_resource type="Script" uid="uid://bst0ukl3gnxym" path="res://Scenes/interactiveplatform.gd" id="7_ynf5e"]
-[ext_resource type="AudioStream" uid="uid://dyhwpyftdvu8w" path="res://Sounds/amen.mp3" id="8_d1ilt"]
 [ext_resource type="Script" uid="uid://nrnjnc8aljjb" path="res://Scenes/jump!.gd" id="9_hptm8"]
+[ext_resource type="Script" uid="uid://d20ggjit0f12u" path="res://Scenes/movingplatform.gd" id="11_k12tt"]
+[ext_resource type="FontFile" uid="uid://bvet8n3rc5w01" path="res://Xolonium-Regular.ttf" id="13_b3802"]
+[ext_resource type="Script" uid="uid://c6tvpyg6bev1g" path="res://Scenes/careful.gd" id="14_wsu2k"]
+[ext_resource type="Script" uid="uid://yyu0ool3ubr8" path="res://Scenes/wait.gd" id="15_k12tt"]
+[ext_resource type="AudioStream" uid="uid://c7g6ua5pfrtct" path="res://Sounds/Cats & Witches Theme.mp3" id="17_h1bgf"]
+[ext_resource type="Script" uid="uid://brk2ywcnr0vi2" path="res://Scenes/jumpmore.gd" id="18_fevyy"]
+[ext_resource type="PackedScene" uid="uid://raonn60wt8mn" path="res://Scenes/pause_menu.tscn" id="20_hibaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdnlq"]
+size = Vector2(473, 310)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krgyh"]
+size = Vector2(56, 40)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_slkoe"]
 
@@ -128,18 +140,6 @@ tracks/1/keys = {
 "points": PackedFloat32Array(416, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sound:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_d1ilt"]
 resource_name = "interactiveplatform"
@@ -155,18 +155,6 @@ tracks/0/keys = {
 "points": PackedFloat32Array(1328.0005, -0.25, 0, 0.53333336, -51.114258, 1359.109, -0.19999999, -35.972534, 1.5968722, 287.2177, 1976, -2.6333332, 30.099976, 0, 0),
 "times": PackedFloat32Array(0, 1.1333333, 7)
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sound:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6iyac"]
 _data = {
@@ -177,8 +165,127 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(48, 20)
 
+[sub_resource type="Animation" id="Animation_wsu2k"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(416, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_jkdf5"]
+resource_name = "platup"
+length = 3.5000000000000004
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(416, -0.23333335, -44.04306, 0.36666662, 24.561798, 256, -0.43333316, -27.30603, 0, 0),
+"times": PackedFloat32Array(0.8, 2.8333333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsu2k"]
+_data = {
+&"RESET": SubResource("Animation_wsu2k"),
+&"platup": SubResource("Animation_jkdf5")
+}
+
+[sub_resource type="Animation" id="Animation_u50mg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_3pmx8"]
+resource_name = "platformmmmm"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4528, -0.25, 0, 0.6666667, -7.2714844, 4832, -0.76666665, 14.777832, 0, 0),
+"times": PackedFloat32Array(0.53333336, 5.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u50mg"]
+_data = {
+&"RESET": SubResource("Animation_u50mg"),
+&"platformmmmm": SubResource("Animation_3pmx8")
+}
+
+[sub_resource type="Animation" id="Animation_1w6v2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platforms/Platform5:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2816, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_cbgmd"]
+resource_name = "platsideways"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platforms/Platform5:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2816, -0.25, 0, 0.8666666, 121.33862, 2216, -1.0333333, -38.213867, 0, 0),
+"times": PackedFloat32Array(0.53333336, 4.5666666)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1w6v2"]
+_data = {
+&"RESET": SubResource("Animation_1w6v2"),
+&"platsideways": SubResource("Animation_cbgmd")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df2p5"]
+size = Vector2(32, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slkoe"]
 size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ajmy"]
+size = Vector2(112, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsu2k"]
+size = Vector2(87, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r3w"]
+size = Vector2(120, 90)
 
 [sub_resource type="Animation" id="Animation_344ge"]
 length = 0.001
@@ -218,8 +325,189 @@ _data = {
 &"collectableitem": SubResource("Animation_ynf5e")
 }
 
+[sub_resource type="Animation" id="Animation_k12tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3232, 560)]
+}
+
+[sub_resource type="Animation" id="Animation_h1bgf"]
+resource_name = "uppydowny"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3232, 560), Vector2(3232, 568)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3802"]
+_data = {
+&"RESET": SubResource("Animation_k12tt"),
+&"uppydowny": SubResource("Animation_h1bgf")
+}
+
+[sub_resource type="Animation" id="Animation_fevyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4672, 365)]
+}
+
+[sub_resource type="Animation" id="Animation_b3802"]
+resource_name = "sjkdfhjkdshgf"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4672, 365), Vector2(4672, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fevyy"]
+_data = {
+&"RESET": SubResource("Animation_fevyy"),
+&"sjkdfhjkdshgf": SubResource("Animation_b3802")
+}
+
+[sub_resource type="Animation" id="Animation_pdsj5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5004, 535)]
+}
+
+[sub_resource type="Animation" id="Animation_hibaj"]
+resource_name = "updown"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5004, 535), Vector2(5004, 529)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdsj5"]
+_data = {
+&"RESET": SubResource("Animation_pdsj5"),
+&"updown": SubResource("Animation_hibaj")
+}
+
+[sub_resource type="Animation" id="Animation_ee4r6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5606, 487)]
+}
+
+[sub_resource type="Animation" id="Animation_gt3je"]
+resource_name = "downup"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5606, 487), Vector2(5606, 484)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pmx8"]
+_data = {
+&"RESET": SubResource("Animation_ee4r6"),
+&"downup": SubResource("Animation_gt3je")
+}
+
 [node name="Node" type="Node" unique_id=317298688]
 script = ExtResource("1_8gbba")
+
+[node name="CameraChange" type="Node" parent="." unique_id=90978382]
+unique_name_in_owner = true
+
+[node name="Area2D" type="Area2D" parent="CameraChange" unique_id=1466688108]
+position = Vector2(3712, 640)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraChange/Area2D" unique_id=849680134]
+position = Vector2(-308.5, 17)
+shape = SubResource("RectangleShape2D_fdnlq")
+
+[node name="Area2D2" type="Area2D" parent="CameraChange" unique_id=1278423383]
+position = Vector2(5608, 584)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraChange/Area2D2" unique_id=1399769492]
+position = Vector2(64, 21)
+shape = SubResource("RectangleShape2D_fdnlq")
+
+[node name="Area2D3" type="Area2D" parent="CameraChange" unique_id=411233333]
+position = Vector2(2700, 244)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraChange/Area2D3" unique_id=507087934]
+shape = SubResource("RectangleShape2D_krgyh")
+
+[node name="Witch" parent="." unique_id=501955873 instance=ExtResource("2_jkdf5")]
+position = Vector2(2712, 264)
 
 [node name="GameManager" type="Node" parent="." unique_id=1294012400]
 unique_name_in_owner = true
@@ -232,18 +520,35 @@ offset_left = 7.0
 offset_top = 3.0
 offset_right = 186.0
 offset_bottom = 26.0
-text = "Books Found: 0/7"
+text = "Books Found: 0/5"
+
+[node name="Mute" type="Button" parent="GameManager/HUD" unique_id=617141981]
+unique_name_in_owner = true
+offset_left = 1088.0
+offset_top = 824.0
+offset_right = 1137.0
+offset_bottom = 855.0
+toggle_mode = true
+text = "Mute"
 
 [node name="Player" parent="." unique_id=964896066 instance=ExtResource("1_bo1nx")]
-position = Vector2(296, 432)
+unique_name_in_owner = true
+position = Vector2(304, 480)
 collision_layer = 7
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1293660229]
 zoom = Vector2(4, 4)
 limit_left = 238
 limit_top = 0
+limit_right = 6064
 limit_bottom = 926
 limit_smoothed = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player" unique_id=717577191]
+position = Vector2(0, -6)
+stream = ExtResource("17_h1bgf")
+pitch_scale = 0.7
+bus = &"Pre-FX"
 
 [node name="Environment" parent="." unique_id=974473399 instance=ExtResource("3_kry3j")]
 
@@ -273,10 +578,6 @@ shape = SubResource("RectangleShape2D_anp1u")
 position = Vector2(1328.0005, 416)
 script = ExtResource("7_ynf5e")
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="Platforms/Platform" unique_id=1883301558]
-stream = ExtResource("8_d1ilt")
-bus = &"Music"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform" unique_id=1741645971]
 libraries/ = SubResource("AnimationLibrary_6iyac")
 
@@ -287,33 +588,43 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform/Area2D" unique_id=379546527]
 shape = SubResource("RectangleShape2D_344ge")
 
+[node name="Platform3" parent="Platforms" unique_id=2135170727 instance=ExtResource("5_kry3j")]
+position = Vector2(2152, 416)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform3" unique_id=1434730405]
+libraries/ = SubResource("AnimationLibrary_wsu2k")
+autoplay = &"platup"
+
+[node name="Platform4" parent="Platforms" unique_id=922154396 instance=ExtResource("5_kry3j")]
+position = Vector2(4528, 416)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform4" unique_id=833216441]
+libraries/ = SubResource("AnimationLibrary_u50mg")
+autoplay = &"platformmmmm"
+
+[node name="Platform5" parent="Platforms" unique_id=1013078298 instance=ExtResource("5_kry3j")]
+position = Vector2(2816, 416)
+script = ExtResource("11_k12tt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform5" unique_id=2012540580]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_1w6v2")
+
+[node name="Area2D" type="Area2D" parent="Platforms/Platform5" unique_id=1328143112]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform5/Area2D" unique_id=1937310577]
+shape = SubResource("RectangleShape2D_df2p5")
+
 [node name="WorldLabels" type="Node" parent="." unique_id=1533847416]
 unique_name_in_owner = true
-
-[node name="Keymaps" type="Label" parent="WorldLabels" unique_id=331627426]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -236.0
-offset_top = 40.0
-offset_right = -7.0
-offset_bottom = 88.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 10
-text = "Use the arrow keys to move...
-Mayus: Sprint
-Z: Jump..."
-script = ExtResource("6_21xkr")
 
 [node name="Jump!" type="Label" parent="WorldLabels" unique_id=511032859]
 offset_left = 1248.0
 offset_top = 424.0
 offset_right = 1288.0
 offset_bottom = 447.0
+theme_override_fonts/font = ExtResource("13_b3802")
 text = "Jump!"
 script = ExtResource("9_hptm8")
 
@@ -325,6 +636,59 @@ collision_mask = 4
 position = Vector2(-48, -48)
 shape = SubResource("RectangleShape2D_slkoe")
 
+[node name="Careful" type="Label" parent="WorldLabels" unique_id=889656629]
+offset_left = 2808.0
+offset_top = 344.0
+offset_right = 2975.0
+offset_bottom = 389.0
+theme_override_colors/font_color = Color(1, 0.9853333, 0.56, 1)
+theme_override_fonts/font = ExtResource("13_b3802")
+theme_override_font_sizes/font_size = 10
+text = "Careful...
+This platform can only be used once.
+Use it to come back with all the books."
+script = ExtResource("14_wsu2k")
+
+[node name="Area2D" type="Area2D" parent="WorldLabels/Careful" unique_id=2069572435]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLabels/Careful/Area2D" unique_id=441408879]
+position = Vector2(104, 52)
+shape = SubResource("RectangleShape2D_0ajmy")
+
+[node name="Wait" type="Label" parent="WorldLabels" unique_id=1414269680]
+offset_left = 4360.0
+offset_top = 424.0
+offset_right = 4479.0
+offset_bottom = 447.0
+theme_override_fonts/font = ExtResource("13_b3802")
+theme_override_font_sizes/font_size = 10
+text = "Wait for the platform..."
+script = ExtResource("15_k12tt")
+
+[node name="Area2D" type="Area2D" parent="WorldLabels/Wait" unique_id=2037413944]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLabels/Wait/Area2D" unique_id=1144649721]
+position = Vector2(83.5, -59)
+shape = SubResource("RectangleShape2D_wsu2k")
+
+[node name="JUMPMORE" type="Label" parent="WorldLabels" unique_id=907529193]
+offset_left = 2856.0
+offset_top = 168.0
+offset_right = 2901.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("13_b3802")
+text = "Jump!"
+script = ExtResource("18_fevyy")
+
+[node name="Area2D" type="Area2D" parent="WorldLabels/JUMPMORE" unique_id=217604384]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLabels/JUMPMORE/Area2D" unique_id=1504692725]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_y4r3w")
+
 [node name="Books" type="Node" parent="." unique_id=1913506304]
 
 [node name="Book" parent="Books" unique_id=1656433842 instance=ExtResource("7_6bp64")]
@@ -334,7 +698,58 @@ position = Vector2(960, 397)
 libraries/ = SubResource("AnimationLibrary_hptm8")
 autoplay = &"collectableitem"
 
+[node name="Book2" parent="Books" unique_id=1489216202 instance=ExtResource("7_6bp64")]
+position = Vector2(3232, 560)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Books/Book2" unique_id=1408965571]
+libraries/ = SubResource("AnimationLibrary_b3802")
+autoplay = &"uppydowny"
+
+[node name="Book3" parent="Books" unique_id=1886889456 instance=ExtResource("7_6bp64")]
+position = Vector2(4672, 365)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Books/Book3" unique_id=1459521699]
+libraries/ = SubResource("AnimationLibrary_fevyy")
+autoplay = &"sjkdfhjkdshgf"
+
+[node name="Book4" parent="Books" unique_id=69711511 instance=ExtResource("7_6bp64")]
+position = Vector2(5004, 535)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Books/Book4" unique_id=431003263]
+libraries/ = SubResource("AnimationLibrary_pdsj5")
+autoplay = &"updown"
+
+[node name="Book5" parent="Books" unique_id=1521227702 instance=ExtResource("7_6bp64")]
+position = Vector2(5606, 487)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Books/Book5" unique_id=400197685]
+libraries/ = SubResource("AnimationLibrary_3pmx8")
+autoplay = &"downup"
+
+[node name="Signal" type="Label" parent="." unique_id=1372200363]
+offset_left = 2768.0
+offset_top = 288.0
+offset_right = 2808.0
+offset_bottom = 311.0
+theme_override_colors/font_color = Color(0.623724, 0.466955, 0.47167724, 1)
+text = ">>>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" parent="." unique_id=1153562943 instance=ExtResource("20_hibaj")]
+layer = 6
+
+[connection signal="body_entered" from="CameraChange/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CameraChange/Area2D" to="Player" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="CameraChange/Area2D2" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CameraChange/Area2D2" to="Player" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="CameraChange/Area2D3" to="Player" method="_on_area_2d_3_body_entered"]
+[connection signal="toggled" from="GameManager/HUD/Mute" to="Player" method="_on_mute_toggled"]
 [connection signal="body_entered" from="Platforms/Platform2/Area2D" to="Platforms/Platform2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Platforms/Platform/Area2D" to="Platforms/Platform" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Platforms/Platform/Area2D" to="Platforms/Platform" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Platforms/Platform5/Area2D" to="Platforms/Platform5" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="WorldLabels/Jump!/Area2D" to="WorldLabels/Jump!" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="WorldLabels/Careful/Area2D" to="WorldLabels/Careful" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="WorldLabels/Wait/Area2D" to="WorldLabels/Wait" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="WorldLabels/JUMPMORE/Area2D" to="WorldLabels/JUMPMORE" method="_on_area_2d_body_entered"]

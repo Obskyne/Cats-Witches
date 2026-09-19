@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bftdr66ro8148"]
+
+[ext_resource type="Texture2D" uid="uid://ctobgqhxp4rn1" path="res://Sprites/witch/bruxaA0.png" id="1_61xru"]
+[ext_resource type="Script" uid="uid://bb07gahp3amxg" path="res://Scenes/witch.gd" id="1_rrl02"]
+[ext_resource type="Texture2D" uid="uid://bdkopf7lwwr46" path="res://Sprites/witch/bruxaA1.png" id="2_rrl02"]
+[ext_resource type="FontFile" uid="uid://bvet8n3rc5w01" path="res://Xolonium-Regular.ttf" id="4_d6wki"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slkoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_61xru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rrl02")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anp1u"]
+size = Vector2(56, 40)
+
+[sub_resource type="Animation" id="Animation_rrl02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_d6wki"]
+resource_name = "dialogue"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_un8x1"]
+_data = {
+&"RESET": SubResource("Animation_rrl02"),
+&"dialogue": SubResource("Animation_d6wki")
+}
+
+[node name="Witch" type="Area2D" unique_id=501955873 groups=["player"]]
+collision_mask = 4
+script = ExtResource("1_rrl02")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1548054250]
+position = Vector2(-8, -24)
+sprite_frames = SubResource("SpriteFrames_slkoe")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.31752923
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873743282]
+position = Vector2(-12, -20)
+shape = SubResource("RectangleShape2D_anp1u")
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=1032576734]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -80.0
+offset_right = 21.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.13422994, 0.0589, 0.31, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("4_d6wki")
+theme_override_font_sizes/normal_font_size = 10
+text = "You see... I was flying on my broomstick, exploring lands to find inspiration and finally finish writing my journal of small ideas..."
+fit_content = true
+autowrap_mode = 2
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1052100907]
+libraries/ = SubResource("AnimationLibrary_un8x1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

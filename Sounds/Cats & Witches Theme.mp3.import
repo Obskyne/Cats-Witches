@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7g6ua5pfrtct"
+path="res://.godot/imported/Cats & Witches Theme.mp3-27358c2fe5e821bf293baf2ded80876a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Cats & Witches Theme.mp3"
+dest_files=["res://.godot/imported/Cats & Witches Theme.mp3-27358c2fe5e821bf293baf2ded80876a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=100.0
+beat_count=0
+bar_beats=4

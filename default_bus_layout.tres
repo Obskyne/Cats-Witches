@@ -19,6 +19,10 @@ ceiling_db = -6.0
 resource_name = "Amplify"
 volume_db = 2.0
 
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_g28q7"]
+resource_name = "Limiter"
+threshold_db = -6.0
+
 [resource]
 bus/1/name = &"SFX"
 bus/1/solo = false
@@ -40,3 +44,11 @@ bus/2/effect/2/effect = SubResource("AudioEffectLimiter_j3pel")
 bus/2/effect/2/enabled = true
 bus/2/effect/3/effect = SubResource("AudioEffectAmplify_j3pel")
 bus/2/effect/3/enabled = true
+bus/3/name = &"Pre-FX"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -3.0293906
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectLimiter_g28q7")
+bus/3/effect/0/enabled = true

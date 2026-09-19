@@ -1,16 +1,184 @@
 [gd_scene format=3 uid="uid://bm034468jg75f"]
 
+[ext_resource type="Script" uid="uid://b3rqslkon3wxb" path="res://Scenes/environment.gd" id="1_a65fu"]
 [ext_resource type="PackedScene" uid="uid://cnlea0c7f4ww1" path="res://Scenes/world.tscn" id="1_km3fo"]
 [ext_resource type="Texture2D" uid="uid://cfyl2bhk85gg8" path="res://Sprites/light.png" id="1_mfu5p"]
 
+[sub_resource type="Animation" id="Animation_ukl56"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.46, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_a65fu"]
+resource_name = "fadein"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1, -0.2108005, 0.15766473, 0.1, -0.07479334, 0.45, -0.39999998, 0.04069245, 0, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukl56"]
+_data = {
+&"RESET": SubResource("Animation_ukl56"),
+&"fadein": SubResource("Animation_a65fu")
+}
+
 [node name="Environment" type="Node2D" unique_id=2142665666]
+script = ExtResource("1_a65fu")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=305986912]
 energy = 0.46
 blend_mode = 1
 
-[node name="Lamplight" type="PointLight2D" parent="." unique_id=1230619651]
+[node name="Lamplights" type="Node" parent="." unique_id=128169780]
+
+[node name="Lamplight" type="PointLight2D" parent="Lamplights" unique_id=1230619651]
 position = Vector2(924, 372)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight2" type="PointLight2D" parent="Lamplights" unique_id=289446840]
+position = Vector2(2967, 372)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight3" type="PointLight2D" parent="Lamplights" unique_id=1487271404]
+position = Vector2(3544, 373)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight4" type="PointLight2D" parent="Lamplights" unique_id=1452192717]
+position = Vector2(3998, 371)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight5" type="PointLight2D" parent="Lamplights" unique_id=2040355446]
+position = Vector2(4456, 372)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight8" type="PointLight2D" parent="Lamplights" unique_id=261330269]
+position = Vector2(4886, 374)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight9" type="PointLight2D" parent="Lamplights" unique_id=1916155636]
+position = Vector2(5004, 519)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight10" type="PointLight2D" parent="Lamplights" unique_id=1666768445]
+position = Vector2(5316, 374)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight11" type="PointLight2D" parent="Lamplights" unique_id=1127461934]
+position = Vector2(5533, 373)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight12" type="PointLight2D" parent="Lamplights" unique_id=833614821]
+position = Vector2(5846, 374)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight13" type="PointLight2D" parent="Lamplights" unique_id=1695236646]
+position = Vector2(5631, 682)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="Lamplight6" type="PointLight2D" parent="Lamplights" unique_id=2067430734]
+position = Vector2(3323, 780)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="BookLight" type="PointLight2D" parent="Lamplights" unique_id=1109526643]
+position = Vector2(3229, 569)
+scale = Vector2(0.14641999, 0.13671875)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="BookLight2" type="PointLight2D" parent="Lamplights" unique_id=1209863047]
+position = Vector2(4672, 365)
+scale = Vector2(0.14641999, 0.13671875)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+offset = Vector2(3.51, 0)
+texture_scale = 0.3
+
+[node name="BookLight3" type="PointLight2D" parent="Lamplights" unique_id=1942368744]
+position = Vector2(5605, 488)
+scale = Vector2(0.14641999, 0.13671875)
 color = Color(0.987855, 0.99, 0.8613, 1)
 energy = 1.18
 blend_mode = 2
@@ -40,4 +208,46 @@ blend_mode = 2
 texture = ExtResource("1_mfu5p")
 texture_scale = 0.01
 
+[node name="Pumpkin3" type="Node" parent="." unique_id=1616151425]
+
+[node name="Pumpkin2" type="PointLight2D" parent="Pumpkin3" unique_id=452895243]
+position = Vector2(3780, 615.00006)
+scale = Vector2(3.5156264, 2.0507796)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+texture_scale = 0.01
+
+[node name="Pumpkin3" type="PointLight2D" parent="Pumpkin3" unique_id=1742500589]
+position = Vector2(3587, 807)
+rotation = 1.532806
+scale = Vector2(3.5156264, 2.0507796)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+texture_scale = 0.01
+
+[node name="Pumpkin4" type="PointLight2D" parent="Pumpkin3" unique_id=1417641176]
+position = Vector2(4885, 546.00006)
+scale = Vector2(3.5156264, 2.0507796)
+color = Color(0.987855, 0.99, 0.8613, 1)
+energy = 1.18
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+texture_scale = 0.01
+
+[node name="Moon" type="Node" parent="." unique_id=242559949]
+
+[node name="Moon" type="PointLight2D" parent="Moon" unique_id=565451884]
+position = Vector2(2293, 274)
+scale = Vector2(2.2734375, 2.1845703)
+energy = 1.27
+blend_mode = 2
+texture = ExtResource("1_mfu5p")
+
 [node name="World" parent="." unique_id=370054864 instance=ExtResource("1_km3fo")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=985212888]
+libraries/ = SubResource("AnimationLibrary_ukl56")

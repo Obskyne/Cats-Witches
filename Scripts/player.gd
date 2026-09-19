@@ -58,11 +58,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_mute_toggled(toggled_on: bool) -> void:
 	var bus_index = AudioServer.get_bus_index("Pre-FX")
-	AudioServer.set_bus_mute(bus_index, toggled_on)# Waits 32 seconds before running the next step
+	AudioServer.set_bus_mute(bus_index, toggled_on)
 	%Mute.release_focus()
 
 func _on_area_2d_3_body_entered(_body: Node2D) -> void:
-	# Instantly disable the collision shape so it cannot trigger again
 	area_collision.set_deferred("disabled", true)
 
 	var tween = create_tween()

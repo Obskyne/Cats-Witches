@@ -1,7 +1,7 @@
 extends Label
 
 func _ready() -> void:
-	modulate.a = 0.0  # empieza invisible
+	modulate.a = 0.0
 
 	var tween := create_tween()
 	tween.tween_interval(1.5)

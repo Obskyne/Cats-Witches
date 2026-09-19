@@ -3,7 +3,6 @@ extends CanvasLayer
 func _ready() -> void:
 	visible = false
 	get_tree().paused = false
-	# Allows this node to keep receiving _input even when the scene tree is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(event: InputEvent) -> void:
